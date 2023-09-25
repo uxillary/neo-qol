@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         [DICE A ROO] Play
-// @namespace    https://github.com/uxillary/NeoQOL/
+// @namespace    http://tampermonkey.net/
+// @url          https://github.com/uxillary/NeoQOL
 // @version      1.1
 // @description  Inspired by Midas@Sythe version 2020. Added Timeout - 23/09/2023
 // @author       Adamski @uxillary
