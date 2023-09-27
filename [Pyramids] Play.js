@@ -24,7 +24,7 @@ style.innerHTML = `
     padding: 10px;
     border: 1px solid #ccc;
     z-index: 1000;
-    font-align: left;
+    text-align: left;
   }
   #feedback-content {
     max-height: 800px;
@@ -77,9 +77,9 @@ suits.forEach(suit => {
   }
 });
 
-// Function to click "Play Pyramids Again!" or "Play Pyramids!" button [TO ADD - Continue Button]<input type="submit" value="Continue Playing">
+// Function to click "Play Pyramids Again!" or "Play Pyramids!"
 function playAgain() {
-  const playButton = document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Play Pyramids!"]');
+  const playButton = document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Continue Playing"], input[type="submit"][value="Play Pyramids!"]');
   if (playButton) {
     setTimeout(() => {
       addFeedback("Found 'Play Again' button. Clicking...");
@@ -96,7 +96,7 @@ function drawCard() {
     if (drawLink) {
       drawLink.click();
     } else {
-      addFeedback("Draw link not found. Attempting to play cards.");
+      addFeedback("No more draws, attempting to play.");
       main(); // Call main function to attempt to play cards
     }
   }, randomTimeout1());
@@ -126,7 +126,7 @@ function main() {
   // First check for Collect Points link
   const collectPointsLink = document.querySelector('a[href*="pyramids.phtml?action=collect"]');
   if (collectPointsLink) {
-    addFeedback("Collect Points link found. Clicking...");
+    addFeedback("Collecting Points...");
     setTimeout(() => {
       collectPointsLink.click();
     }, randomTimeout1());
@@ -145,10 +145,12 @@ function main() {
     let cardName = imgSrc.split('/').pop().split('.')[0];
     let actionUrl = el.href;
     return { cardName, actionUrl };
+    addFeedback(`cardsArray ${cardsArray}`);
   });
 
     // Check each card against play rules
     let playableCards = cardsArray.filter(card => checkPlayRules(card, activeCardName)); // Implement checkPlayRules()
+    addFeedback(`PlayableCards: ${playableCards}`);
 
     // Perform action
     if (playableCards.length > 0) {
