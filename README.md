@@ -13,7 +13,7 @@ Experience enhancements include:
 - **In-Page Info**: Access useful information directly on the page without needing to navigate away.
 
 
-# Pyramids Play - Neopets Automation Script
+# Pyramids Play - Neopets Script
 
 ## Description
 Automate your Pyramids game on Neopets. This UserScript helps you play the game with less manual interaction.
