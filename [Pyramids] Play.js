@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         [Pyramids] Play 2.2
-// @version      2.2
-// @description  27/09/2023 [Smarter Moves][Less Resources]
+// @name         [Pyramids] Play 2.3
+// @version      2.3
+// @description  28/09/2023 [Reduced Load Time]
 // @namespace    https://github.com/uxillary/NeoQOL/
 // @author       adamski @uxillary
 // @match        https://www.neopets.com/games/pyramids/pyramids.phtml
@@ -17,8 +17,8 @@ let timeoutID = setTimeout(() => {
   window.location.href = "https://www.neopets.com/games/pyramids";
 }, 30000); // 30000 milliseconds = 30 seconds
 
-// Clear the timeout if the page successfully reloads or redirects
-window.addEventListener("load", () => {
+// Clear the timeout if the page successfully reloads or redirects [reduced loadtime]
+document.addEventListener("DOMContentLoaded", () => {
   clearTimeout(timeoutID);
 });
 
