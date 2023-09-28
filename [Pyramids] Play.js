@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         [Pyramids] Play 2.1
-// @version      2.1
-// @description  27/09/2023
+// @name         [Pyramids] Play 2.2
+// @version      2.2
+// @description  27/09/2023 [Smarter Moves][Less Resources]
 // @namespace    https://github.com/uxillary/NeoQOL/
 // @author       adamski @uxillary
 // @match        https://www.neopets.com/games/pyramids/pyramids.phtml
@@ -12,7 +12,17 @@
 // @grant        none
 // ==/UserScript==
 
+// Set a timeout for 30 seconds
+let timeoutID = setTimeout(() => {
+  window.location.href = "https://www.neopets.com/games/pyramids";
+}, 30000); // 30000 milliseconds = 30 seconds
 
+// Clear the timeout if the page successfully reloads or redirects
+window.addEventListener("load", () => {
+  clearTimeout(timeoutID);
+});
+
+/* // -- For Debugging -- // -- For Debugging -- // -- For Debugging -- // -- For Debugging -- //
 // Create and inject CSS
 const style = document.createElement('style');
 style.innerHTML = `
@@ -48,16 +58,6 @@ popup.appendChild(content);
 
 document.body.appendChild(popup);
 
-// Generate random timeout
-function randomTimeout() {
-  return Math.floor(Math.random() * (4400 - 2500 + 1) + 2500);
-}
-
-// Feedback Timeout
-function randomTimeout1() {
-  return Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
-}
-
 // Function to add feedback
 function addFeedback(message) {
   const p = document.createElement('p');
@@ -65,12 +65,29 @@ function addFeedback(message) {
   document.getElementById('feedback-content').appendChild(p);
 }
 
+*/ // -- For Debugging -- // -- For Debugging -- // -- For Debugging -- // -- For Debugging -- //
+
+/*// Feedback Timeout
+function randomTimeout1() {
+  return Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
+}
+
+// Next Game Timeout
+function randomTimeout2() {
+  return Math.floor(Math.random() * (15000 - 1000 + 1) + 1000);
+} */
+
+// Generate random timeout
+function randomTimeout() {
+  return Math.floor(Math.random() * (3500 - 1000 + 1) + 1000);
+}
+
 // Function to click "Play Pyramids Again!" or "Play Pyramids!"
 function playAgain() {
   const playButton = document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Continue Playing"], input[type="submit"][value="Play Pyramids!"]');
   if (playButton) {
     setTimeout(() => {
-      addFeedback("Found 'Play Again' button. Clicking...");
+//      addFeedback("Found 'Play Again' button. Clicking..."); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
       playButton.click();
     }, randomTimeout());
   }
@@ -79,15 +96,15 @@ function playAgain() {
 // Function to draw a card
 function drawCard() {
     setTimeout(() => {
-    addFeedback('Drawing a card...');
+//    addFeedback('Drawing a card...'); // Debugging Feedback
     const drawLink = document.querySelector('a[href="pyramids.phtml?action=draw"]');
     if (drawLink) {
       drawLink.click();
     } else {
-      addFeedback("No more draws, attempting to play.");
+//      addFeedback("No more draws, attempting to play."); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
       main(); // Call main function to attempt to play cards
     }
-    }, randomTimeout1());
+    }, randomTimeout());
 }
 
 // GAME RULES
@@ -110,17 +127,30 @@ function checkPlayRules(card, activeCardNumber) {
   return false;
 }
 
+// Smarter Moves
+let cardsArray = [];
+
+function getFutureMoves(cardName) {
+  let futureMoves = 0;
+  for (const card of cardsArray) {
+    if (checkPlayRules(card, cardName)) {
+      futureMoves++;
+    }
+  }
+  return futureMoves;
+}
+
 // Game Count
 let collectPointsCounter = 0;
 
 //    MAIN
 //  FUNCTION
 function main() {
-  document.getElementById("feedback-popup").style.display = "block";
-  addFeedback("Started");
+//  document.getElementById("feedback-popup").style.display = "block"; // -- For Debugging -- // -- For Debugging -- // -- For Debugging -- // -- For Debugging -- //
+//  addFeedback("Started"); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
 
   // Check for 'Play Again' or 'Play Pyramids!' button
-  if (document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Play Pyramids!"]')) {
+  if (document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Continue Playing"], input[type="submit"][value="Play Pyramids!"]')) {
     setTimeout(() => {
       playAgain();
     }, randomTimeout());
@@ -130,8 +160,8 @@ function main() {
   // First check for Collect Points link
   const collectPointsLink = document.querySelector('a[href*="pyramids.phtml?action=collect"]');
     if (collectPointsLink) {
-        collectPointsCounter++;
-        addFeedback(`Collecting Points... Total Games: ${collectPointsCounter}`);
+//        collectPointsCounter++; // Game Counter
+//        addFeedback(`Collecting Points... Total Games: ${collectPointsCounter}`); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
         setTimeout(() => {
             collectPointsLink.click();
         }, randomTimeout());
@@ -144,7 +174,7 @@ function main() {
   // let activeCardName = activeCardSrc.split('/').pop().split('.')[0];
   let activeCardNumber = parseInt(activeCardSrc.split('/').pop().split('.')[0].split('_')[0]);
 
-  addFeedback(`Active Card: ${activeCardNumber}`);
+//  addFeedback(`Active Card: ${activeCardNumber}`); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
 
   // Scrape cards from the table into an array
     let cardElements = document.querySelectorAll('a[href*="action=play&position"]');
@@ -158,21 +188,26 @@ function main() {
     // Check each card against play rules
     let playableCards = cardsArray.filter(card => checkPlayRules(card, activeCardNumber)); // Implement checkPlayRules()
 
+    playableCards = playableCards.map(card => {
+        card.futureMoves = getFutureMoves(card.cardName);
+        return card;
+    });
 
+    playableCards.sort((a, b) => b.futureMoves - a.futureMoves);
     // Perform action
     if (playableCards.length > 0) {
-        let randomIndex = Math.floor(Math.random() * playableCards.length);
-        let cardToPlay = playableCards[randomIndex];
-        addFeedback(`Planning to play: ${cardToPlay.cardName}`);
+        let bestCardToPlay = playableCards[0];
+//        addFeedback(`Planning to play: ${bestCardToPlay.cardName}`); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
         setTimeout(() => {
-            addFeedback(`Playing card: ${cardToPlay.cardName}`);
-            window.location.href = cardToPlay.actionUrl;
+//            addFeedback(`Playing card: ${bestCardToPlay.cardName}`); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
+            window.location.href = bestCardToPlay.actionUrl;
         }, randomTimeout());
+     //Draw Card Logic
     } else {
-        addFeedback("About to draw a card...");
+//        addFeedback("About to draw a card..."); // -- For Debugging Feedback -- // -- For Debugging Feedback -- //
         setTimeout(() => {
             drawCard();
-        }, randomTimeout1());
+        }, randomTimeout());
     }
 }
 
