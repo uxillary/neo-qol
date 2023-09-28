@@ -1,18 +1,16 @@
-# NeoQOL
-# www.neoepets.com
+# NeoQOL: Quality of Life Scripts for Neopets
+## Enhance Your Neopets Experience
 
-## Quality Of Life Scripts for Neopets
+### Disclaimer
+All scripts have been developed with utmost caution to stay within the parameters set by The Neopets Team (TNT) policies and guidelines. While scripting remains a contested topic within the Neopets community, we've strived to ensure compliance. **Use these scripts at your own risk**—personally, I refrain from using them on my main account. These are, for me, a playground to hone my coding skills.
 
-All Scripts are created with the intent to keep within TNT policies & rules. After doing some reasrch, I understand that Scripts are a bit of a grey area. Some would argue that they push the boundaries of the rules, care has been taken to comply.
-However, use these at your own risk
+### Helpful Resources
+For more clarity on the do's and don'ts of using scripts on Neopets, check out this comprehensive Reddit guide: [Am I Accidentally Cheating?](https://www.reddit.com/r/neopets/comments/fv06hm/am_i_accidentally_cheating_guide_to_figuring_out/)
 
-More useful information on using scripts on the Subreddit here: https://www.reddit.com/r/neopets/comments/fv06hm/am_i_accidentally_cheating_guide_to_figuring_out/
-
-Eamples of what the Scripts can do -
-
-- [Highlight] items that may be of interest.
-- [Display] useful information without leaving the page.
-
+### Features
+Experience enhancements include:
+- **Highlighting**: Easily spot items that may be of interest to you.
+- **In-Page Info**: Access useful information directly on the page without needing to navigate away.
 
 
 # Pyramids Play - Neopets Automation Script
