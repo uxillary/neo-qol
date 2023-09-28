@@ -8,6 +8,7 @@
 // @match        https://www.neopets.com/games/pyramids/pyramids*
 // @match        https://www.neopets.com/games/pyramids/index.phtml
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
+// @run-at	     document-end
 // @grant        none
 // ==/UserScript==
 
@@ -49,7 +50,7 @@ document.body.appendChild(popup);
 
 // Generate random timeout
 function randomTimeout() {
-  return Math.floor(Math.random() * (4200 - 2800 + 1) + 2800);
+  return Math.floor(Math.random() * (4400 - 2500 + 1) + 2500);
 }
 
 // Feedback Timeout
@@ -109,6 +110,9 @@ function checkPlayRules(card, activeCardNumber) {
   return false;
 }
 
+// Game Count
+let collectPointsCounter = 0;
+
 //    MAIN
 //  FUNCTION
 function main() {
@@ -119,26 +123,28 @@ function main() {
   if (document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Play Pyramids!"]')) {
     setTimeout(() => {
       playAgain();
-    }, randomTimeout1());
+    }, randomTimeout());
     return;
   }
 
   // First check for Collect Points link
   const collectPointsLink = document.querySelector('a[href*="pyramids.phtml?action=collect"]');
-  if (collectPointsLink) {
-    addFeedback("Collecting Points...");
-    setTimeout(() => {
-      collectPointsLink.click();
-    }, randomTimeout());
-    return; // Exit the function after clicking
-  }
+    if (collectPointsLink) {
+        collectPointsCounter++;
+        addFeedback(`Collecting Points... Total Games: ${collectPointsCounter}`);
+        setTimeout(() => {
+            collectPointsLink.click();
+        }, randomTimeout());
+        return; //Exit function after click
+    }
+
 
   // Find active card
   let activeCardSrc = document.querySelector('td[valign="top"] img:nth-child(2)').src;
   // let activeCardName = activeCardSrc.split('/').pop().split('.')[0];
   let activeCardNumber = parseInt(activeCardSrc.split('/').pop().split('.')[0].split('_')[0]);
 
-  addFeedback(`Active card found: ${activeCardNumber}`);
+  addFeedback(`Active Card: ${activeCardNumber}`);
 
   // Scrape cards from the table into an array
     let cardElements = document.querySelectorAll('a[href*="action=play&position"]');
