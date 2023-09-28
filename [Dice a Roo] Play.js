@@ -1,9 +1,8 @@
 // ==UserScript==
-// @name         [DICE A ROO] Play
-// @namespace    http://tampermonkey.net/
-// @url          https://github.com/uxillary/NeoQOL
-// @version      1.1
-// @description  Inspired by Midas@Sythe version 2020. Added Timeout - 23/09/2023
+// @name         [Dice A Roo] Play
+// @namespace    https://github.com/uxillary/NeoQOL/
+// @version      1.2
+// @description  Inspired by Midas@Sythe version 2020. Added Timeout & Stop - 23/09/2023
 // @author       Adamski @uxillary
 // @match        https://www.neopets.com/games/play_dicearoo.phtml
 // @match        https://www.neopets.com/games/dicearoo.phtml
