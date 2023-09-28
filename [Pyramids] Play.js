@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         [Pyramids] Play
-// @version      1.9
+// @name         [Pyramids] Play 2.1
+// @version      2.1
 // @description  27/09/2023
 // @namespace    https://github.com/uxillary/NeoQOL/
 // @author       adamski @uxillary
@@ -8,7 +8,6 @@
 // @match        https://www.neopets.com/games/pyramids/pyramids*
 // @match        https://www.neopets.com/games/pyramids/index.phtml
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
-// @run-at	     document-end
 // @grant        none
 // ==/UserScript==
 
@@ -65,18 +64,6 @@ function addFeedback(message) {
   document.getElementById('feedback-content').appendChild(p);
 }
 
-// Game Rules -- NEEDS ATTENTION
-const suits = ['clubs', 'diamonds', 'hearts', 'spades'];
-let playRules = {};
-
-suits.forEach(suit => {
-  for (let i = 2; i <= 14; i++) {
-    let previous = (i === 2) ? 14 : i - 1;
-    let next = (i === 14) ? 2 : i + 1;
-    playRules[`${i}_${suit}`] = [`${previous}_${suit}`, `${next}_${suit}`];
-  }
-});
-
 // Function to click "Play Pyramids Again!" or "Play Pyramids!"
 function playAgain() {
   const playButton = document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Continue Playing"], input[type="submit"][value="Play Pyramids!"]');
@@ -84,13 +71,13 @@ function playAgain() {
     setTimeout(() => {
       addFeedback("Found 'Play Again' button. Clicking...");
       playButton.click();
-    }, randomTimeout1());
+    }, randomTimeout());
   }
 }
 
 // Function to draw a card
 function drawCard() {
-  setTimeout(() => {
+    setTimeout(() => {
     addFeedback('Drawing a card...');
     const drawLink = document.querySelector('a[href="pyramids.phtml?action=draw"]');
     if (drawLink) {
@@ -99,13 +86,24 @@ function drawCard() {
       addFeedback("No more draws, attempting to play.");
       main(); // Call main function to attempt to play cards
     }
-  }, randomTimeout1());
+    }, randomTimeout1());
+}
+
+// GAME RULES
+const suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+// playRules[`${i}_${suit}`] = [`${previous}_${suit}`, `${next}_${suit}`];
+
+let playRules = {};
+for (let i = 2; i <= 14; i++) {
+  let previous = (i === 2) ? 14 : i - 1;
+  let next = (i === 14) ? 2 : i + 1;
+  playRules[i] = [previous, next];
 }
 
 // Function to check play rules against active card
-function checkPlayRules(card, activeCardName) {
-  let activeRules = playRules[activeCardName];
-  if (activeRules.includes(card.cardName)) {
+function checkPlayRules(card, activeCardNumber) {
+  let activeRules = playRules[activeCardNumber];
+  if (activeRules.includes(parseInt(card.cardName.split('_')[0]))) {
     return true;
   }
   return false;
@@ -119,7 +117,9 @@ function main() {
 
   // Check for 'Play Again' or 'Play Pyramids!' button
   if (document.querySelector('input[type="submit"][value="Play Pyramids Again!"], input[type="submit"][value="Play Pyramids!"]')) {
-    playAgain();
+    setTimeout(() => {
+      playAgain();
+    }, randomTimeout1());
     return;
   }
 
@@ -129,14 +129,16 @@ function main() {
     addFeedback("Collecting Points...");
     setTimeout(() => {
       collectPointsLink.click();
-    }, randomTimeout1());
+    }, randomTimeout());
     return; // Exit the function after clicking
   }
 
   // Find active card
   let activeCardSrc = document.querySelector('td[valign="top"] img:nth-child(2)').src;
-  let activeCardName = activeCardSrc.split('/').pop().split('.')[0];
-  addFeedback(`Active card found: ${activeCardName}`);
+  // let activeCardName = activeCardSrc.split('/').pop().split('.')[0];
+  let activeCardNumber = parseInt(activeCardSrc.split('/').pop().split('.')[0].split('_')[0]);
+
+  addFeedback(`Active card found: ${activeCardNumber}`);
 
   // Scrape cards from the table into an array
     let cardElements = document.querySelectorAll('a[href*="action=play&position"]');
@@ -145,12 +147,11 @@ function main() {
     let cardName = imgSrc.split('/').pop().split('.')[0];
     let actionUrl = el.href;
     return { cardName, actionUrl };
-    addFeedback(`cardsArray ${cardsArray}`);
   });
 
     // Check each card against play rules
-    let playableCards = cardsArray.filter(card => checkPlayRules(card, activeCardName)); // Implement checkPlayRules()
-    addFeedback(`PlayableCards: ${playableCards}`);
+    let playableCards = cardsArray.filter(card => checkPlayRules(card, activeCardNumber)); // Implement checkPlayRules()
+
 
     // Perform action
     if (playableCards.length > 0) {
@@ -162,10 +163,10 @@ function main() {
             window.location.href = cardToPlay.actionUrl;
         }, randomTimeout());
     } else {
-        addFeedback("Planning to draw a card...");
+        addFeedback("About to draw a card...");
         setTimeout(() => {
             drawCard();
-        }, randomTimeout());
+        }, randomTimeout1());
     }
 }
 
