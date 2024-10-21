@@ -49,9 +49,6 @@ function doesCellContainImage(cellIndex, imgSrc) {
       console.log("Checked the checkboxes for map pieces.");
     }
   }
-
-// ... Your existing utility functions here ...
-
 // Function to find and click a button with specified values
 function findAndClickButton() {
   var buttonValues = ["Play Again", "Collect Winnings", "Click Here to Play"];
