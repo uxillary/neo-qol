@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         [SCORCHY SLOTS] Play2
-// @namespace    https://github.com/uxillary/NeoQOL/
+// @name         Scorchy Slots
 // @version      1.2
-// @description  Scorchy Slots. Added HOLD position. 23/09/2023
+// @description  Added HOLD position (map pieces). 23/09/2023
+// @author       adamski @uxillary
+// @namespace    https://github.com/uxillary/neo-qol/
 // @match        https://www.neopets.com/games/slots.phtml*
-// @author       Adamski @uxillary
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant        none
 // ==/UserScript==

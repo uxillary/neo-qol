@@ -2,7 +2,7 @@
 ## Enhance Your Neopets Experience
 
 ### Disclaimer
-All scripts have been developed with utmost caution to stay within the parameters set by The Neopets Team (TNT) policies and guidelines. While scripting remains a contested topic within the Neopets community, we've strived to ensure compliance. **Use these scripts at your own risk**—personally, I refrain from using them on my main account. These are, for me, a playground to hone my coding skills.
+All scripts have been developed with caution to stay within the parameters set by The Neopets Team (TNT) policies and guidelines. While scripting remains a contested topic within the Neopets community, we've strived to ensure compliance. **Use these scripts at your own risk** — personally, I wouldn't use these on a main account, it's not worth the risk. I really just scripted these for fun.
 
 ### Helpful Resources
 For more clarity on the do's and don'ts of using scripts on Neopets, check out this comprehensive Reddit guide: [Am I Accidentally Cheating?](https://www.reddit.com/r/neopets/comments/fv06hm/am_i_accidentally_cheating_guide_to_figuring_out/)
@@ -12,10 +12,8 @@ Experience enhancements include:
 - **Highlighting**: Easily spot items that may be of interest to you.
 - **In-Page Info**: Access useful information directly on the page without needing to navigate away.
 
-
-# Pyramids Play - Neopets Script
-
-## Description
+## Pyramids Neopets Script
+### Description
 Automate your Pyramids game on Neopets. This UserScript helps you play the game with less manual interaction.
 
 ## Features
@@ -33,7 +31,7 @@ Automate your Pyramids game on Neopets. This UserScript helps you play the game 
 2. **Add UserScript:** 
    - Open Tampermonkey Dashboard
    - Click 'Create a new script'
-   - Paste the content of `pyramids-play-3.0.js`
+   - Paste the content of `SCRIPT-NAMEjs`
 
 3. **Save and Enable:** 
    - Click 'File' then 'Save'
@@ -43,8 +41,12 @@ Automate your Pyramids game on Neopets. This UserScript helps you play the game 
 1. Navigate to [Pyramids on Neopets](https://www.neopets.com/games/pyramids)
 2. The script will automatically take action based on the current game state.
 
+## Debugging
+1. Some scripts have debugging included, commented out until needed.
+2. Always use @match over @include which is depreciated
+
 ## Contributing
-- Fork the repo on [GitHub](https://github.com/uxillary/NeoQOL/)
+- Fork the repo on [GitHub](https://github.com/uxillary/neo-qol/)
 - Clone the project to your machine
 - Commit changes to your branch
 - Push your changes

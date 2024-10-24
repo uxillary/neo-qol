@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         [Potato Counter] Play
+// @name         Potato Counter
 // @version      1.0
 // @description  30/09/2023 Fills in the correct answer (does not auto-submit)
-// @namespace    https://github.com/uxillary/NeoQOL/
 // @author       adamski @uxillary
+// @namespace    https://github.com/uxillary/neo-qol/
 // @match        https://www.neopets.com/medieval/potatocounter.phtml
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @run-at	     document-end

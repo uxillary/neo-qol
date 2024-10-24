@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         [Dice A Roo] Play
-// @namespace    https://github.com/uxillary/NeoQOL/
+// @name         Dice-A-Roo
 // @version      1.2
 // @description  Inspired by Midas@Sythe version 2020. Added Timeout & Stop - 23/09/2023
-// @author       Adamski @uxillary
-// @match        https://www.neopets.com/games/play_dicearoo.phtml
-// @match        https://www.neopets.com/games/dicearoo.phtml
+// @author       adamski @uxillary
+// @namespace    https://github.com/uxillary/neo-qol
+// @match        https://www.neopets.com/games/play_dicearoo.phtml*
+// @match        https://www.neopets.com/games/dicearoo.phtml*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant        none
 // ==/UserScript==

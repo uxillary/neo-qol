@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         [Pyramids] Play 2.3
+// @name         Pyramids
 // @version      2.3
 // @description  28/09/2023 [Reduced Load Time]
-// @namespace    https://github.com/uxillary/NeoQOL/
 // @author       adamski @uxillary
+// @namespace    https://github.com/uxillary/neo-qol/
 // @match        https://www.neopets.com/games/pyramids/pyramids.phtml
 // @match        https://www.neopets.com/games/pyramids/pyramids*
-// @match        https://www.neopets.com/games/pyramids/index.phtml
+// @match        https://www.neopets.com/games/pyramids/index.phtml*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @run-at	     document-end
 // @grant        none

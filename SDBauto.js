@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Neopets Safety Deposit Box Auto-Fill
-// @namespace    https://tampermonkey.net/
-// @version      1.0
-// @description  Automatically fill in the safety deposit box code on Neopets.
-// @author       adamski
+// @name         SDB Auto-Fill & Key
+// @version      1.1
+// @description  Automatically fills SDB PIN, additional key at the side for reference. 24/10/2024
+// @author       adamski @uxillary
+// @namespace    https://github.com/uxillary/neo-qol
 // @match        https://www.neopets.com/safetydeposit.phtml*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant        none
