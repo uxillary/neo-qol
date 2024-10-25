@@ -2,10 +2,13 @@
 ## Enhance Your Neopets Experience
 
 ### Disclaimer
-All scripts have been developed with caution to stay within the parameters set by The Neopets Team (TNT) policies and guidelines. While scripting remains a contested topic within the Neopets community, we've strived to ensure compliance. **Use these scripts at your own risk** — personally, I wouldn't use these on a main account, it's not worth the risk. I really just scripted these for fun.
+All scripts have been developed with caution to stay within the parameters set by The Neopets Team (TNT) policies and guidelines. While scripting remains a contested topic within the Neopets community, we've strived to ensure compliance. Personally, I wouldn't use these scripts on a main account, it's not worth the risk.
+
+> [!CAUTION]
+>Use these scripts at your own risk.
 
 ### Helpful Resources
-For more clarity on the do's and don'ts of using scripts on Neopets, check out this comprehensive Reddit guide: [Am I Accidentally Cheating?](https://www.reddit.com/r/neopets/comments/fv06hm/am_i_accidentally_cheating_guide_to_figuring_out/)
+For more clarity on the do's and dont's of using scripts on Neopets, check out this comprehensive Reddit guide: [Am I Accidentally Cheating?](https://www.reddit.com/r/neopets/comments/fv06hm/am_i_accidentally_cheating_guide_to_figuring_out/)
 
 Experience enhancements include:
 - **Highlighting**: Easily spot items that may be of interest to you.
@@ -19,19 +22,18 @@ This script highlights items in Shops based on their price categories, making it
 - **Visual Highlights**: Items are color-coded and highlighted based on their price, with subtler items having light grey colors and more expensive ones having bold red borders.
 
 ### How to Use
-Install the Script: Download the script and add it to your preferred user script manager such as Tampermonkey.
-Shop Page Matching: The script automatically runs when you visit the Shop page (/objects.phtml?obj_type=`20`&type=shop).
-Highlighting: The script highlights items under the following categories:
-< 700 NP: Light grey color, lowered opacity.
-700 - 1,900 NP: No highlight.
-1,900 - 4,500 NP: Green dotted border.
-4,500 - 40,000 NP: Orange dotted border.
-> 40,000 NP: Thick red border and underline.
+- Install the Script: Download the script and add it to your preferred user script manager such as Tampermonkey.
+- Shop Page Matching: The script automatically runs when you visit the Shop page **(/objects.phtml?obj_type=`20`&type=shop)**
+### The script highlights items under the following categories:
+- 🟦 **< 700 NP**  
+- 🟨 **700 - 1,900 NP**  
+- 🟩 **1,900 - 4,500 NP**  
+- 🟧 **4,500 - 40,000 NP**  
+- 🟥 **40,000 NP +**
 
+##
 ### Pyramids Neopets Script
 Automate your Pyramids game on Neopets. This UserScript helps you play the game with less manual interaction.
-
-## Features
 - **Auto-Play:** Automatically clicks 'Play Again' to start a new game.
 - **Smart Moves:** Uses an algorithm to make smart decisions on which card to play next.
 - **Random Timing:** Utilizes random timeouts to mimic human interaction.
@@ -70,5 +72,5 @@ For all scripts you will need a browser extension.
 
 Contributions are welcome! If you have ideas for improvements, new features, or if you'd like to make changes, feel free to fork the repository and submit a pull request. I'm always open to collaborations and happy to review any updates or suggestions. :smirk:
 
-## License
+### License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
