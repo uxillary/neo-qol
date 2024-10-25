@@ -261,7 +261,7 @@ const List4 = [
 (function() {
     'use strict';
 
-    // Create the div element
+    // Create the price key div element
     var keyDiv = document.createElement('div');
 
     // Set styles to make it subtle and fixed to the right side
@@ -288,34 +288,34 @@ const List4 = [
         keyDiv.style.opacity = '0.6';
     };
 
-    // The content of the key
+    // The content of the key with added space and alignment tweaks
     keyDiv.innerHTML = `
     <div style="display: flex; align-items: center;">
     <strong>- Price Key -</strong></center><br><br>
     </div>
-    <div style="display: flex; align-items: center;">
+    <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; background-color: #f1f1f1; margin-right: 5px;"></div>
         < 700 NP
-    </div><br>
-    <div style="display: flex; align-items: center;">
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; background-color: #fff; margin-right: 5px;"></div>
         700 - 1,900 NP
-    </div><br>
-    <div style="display: flex; align-items: center;">
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; border: 1px dotted green; margin-right: 5px;"></div>
         1,900 - 4,500 NP
-    </div><br>
-    <div style="display: flex; align-items: center;">
+    </div>
+    <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; border: 1px solid orange; margin-right: 5px;"></div>
         4,500 - 40,000 NP
-    </div><br>
+    </div>
     <div style="display: flex; align-items: center;">
         <div style="width: 12px; height: 12px; border: 2px solid red; margin-right: 5px;"></div>
         40,000 NP +
     </div>
 `;
 
-    // Append the div to the body
+    // Append the price key div to the body
     document.body.appendChild(keyDiv);
 })();
 
@@ -329,36 +329,32 @@ function applyStylesToItems(itemArray) {
     if (itemArray.includes(itemName)) {
       // Apply different styles based on the array order
       if (itemArray === List4) {
-        // For SpookyFood4, Thick Red
+        // Red Thick Box
         itemNames[i].parentNode.style.border = "4px solid red";
         itemNames[i].parentNode.style.padding = "4px";
+        itemNames[i].parentNode.style.boxShadow = "0 4px 8px rgba(255, 0, 0, 0.2)";
         itemNames[i].style.color = "red";
+        itemNames[i].style.fontWeight = "normal";
         itemNames[i].style.textDecoration = "underline";
-        // Insert square brackets
-        itemNames[i].textContent = "[[" + itemName + "]]";
       } else if (itemArray === List3) {
-        // For SpookyFood3, Red Bold
+        // Orange Dotted
+        itemNames[i].parentNode.style.border = "2px dotted red";
         itemNames[i].style.color = "red";
-        itemNames[i].style.textDecoration = "underline";
-        itemNames[i].parentNode.style.border = "2px solid red";
-        itemNames[i].parentNode.style.padding = "2px";
+        itemNames[i].parentNode.style.boxShadow = "0 4px 8px rgba(255, 0, 0, 0.1)";
       } else if (itemArray === List2) {
-        // For SpookyFood2, Orange
+        // Orange
         itemNames[i].style.color = "orange";
-        itemNames[i].style.textDecoration = "underline";
         itemNames[i].parentNode.style.border = "2px dotted orange";
-        itemNames[i].parentNode.style.padding = "2px";
+        itemNames[i].parentNode.style.boxShadow = "0 4px 8px rgba(255, 165, 0, 0.2)";
       } else if (itemArray === List1) {
-        // For SpookyFood1, Green
+        // Green Dotted
         itemNames[i].style.color = "green";
-        itemNames[i].style.textDecoration = "underline";
         itemNames[i].parentNode.style.border = "1px dotted green";
-        itemNames[i].parentNode.style.padding = "2px";
-       } else if (itemArray === List0) {
-        // For SpookyFood0, Grey
+        itemNames[i].parentNode.style.boxShadow = "0 4px 8px rgba(0, 255, 0, 0.2)";
+      } else if (itemArray === List0) {
+        // Light Grey
         itemNames[i].style.color = "lightgrey";
         itemNames[i].style.fontWeight = "normal";
-        // Change the opacity
         var itemImgDiv = itemNames[i].parentNode.querySelector(".item-img");
         if (itemImgDiv) {
           itemImgDiv.style.opacity = "0.2";
@@ -368,7 +364,7 @@ function applyStylesToItems(itemArray) {
   }
 }
 
-// Loop through each SpookyFood array and apply styles
+// Loop through each price array and apply styles
 applyStylesToItems(List4);
 applyStylesToItems(List3);
 applyStylesToItems(List2);
