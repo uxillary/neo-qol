@@ -30,6 +30,18 @@ This script highlights items in Shops based on their price categories, making it
 - 🟩 **1,900 - 4,500 NP**  
 - 🟧 **4,500 - 40,000 NP**  
 - 🟥 **40,000 NP +**
+<!-- [![Thumbnail description](img/shop-example-thumb.png)](img/shop-example.png) -->
+
+## How to Update Item Lists:
+To ensure the correct items are highlighted, follow these steps to manually obtain the latest item price lists from Jellyneo. Also, if you want to use this script template and add a different shop.
+
+- Search Items: Visit Jellyneo’s Item Database and search for the desired shop items.
+- Filter by Price: Sort the items by price to find those that fall into the desired price categories.
+- Use the "JN Item Name Extractor" script.
+> [!NOTE]
+> This script is compliant with JN's Scraping Policy.
+- Copy Item Names: Copy the item names using the copy button provided by the JN script.
+- Update the Shop Script: Paste the item names into their respective lists in the script and save it.
 
 ##
 ### Pyramids Neopets Script
