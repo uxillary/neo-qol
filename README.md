@@ -32,12 +32,14 @@ This script highlights items in Shops based on their price categories, making it
 To ensure the correct items are highlighted, follow these steps to manually obtain the latest item price lists from Jellyneo. Also, if you want to use this script template and add a different shop.
 
 - Search Items: Visit Jellyneo’s Item Database and search for the desired shop items.
+> [Example Search Term](https://items.jellyneo.net/search/?name_type=2&cat[]=11&min_rarity=0&max_rarity=100&min_price=40000&sort=5&sort_dir=desc&limit=75) for Spooky Food (obj 30)
 - Filter by Price: Sort the items by price to find those that fall into the desired price categories.
-- Use the "JN Item Name Extractor" script.
+- Install the "JN Item Name Extractor" script to Tampermonkey, found above.
 > [!NOTE]
 > This script is compliant with JN's Scraping Policy.
-- Copy Item Names: Copy the item names using the copy button provided by the JN script.
+- Copy item names: Copy the item names using the copy button provided by the JN script.
 - Update the Shop Script: Paste the item names into their respective lists in the script and save it.
+- Some items cost more than the SW/ JN price - just remove these as you go, and save.
 
 ##
 ### Pyramids Neopets Script
@@ -79,7 +81,7 @@ For all scripts you will need a browser extension.
 - Push your changes
 - Create a new Pull Request
 
-> [!NOTE]
+> [!TIP]
 > Contributions are welcome! If you have ideas for improvements, new features, or if you'd like to make changes, feel free to fork the repository and submit a pull request. I'm always open to collaborations and happy to review any updates or suggestions. :smirk:
 
 ### License
