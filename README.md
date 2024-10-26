@@ -9,11 +9,7 @@ All scripts have been developed with caution to stay within the parameters set b
 
 ### Helpful Resources
 For more clarity on the do's and dont's of using scripts on Neopets, check out this comprehensive Reddit guide: [Am I Accidentally Cheating?](https://www.reddit.com/r/neopets/comments/fv06hm/am_i_accidentally_cheating_guide_to_figuring_out/)
-
-Experience enhancements include:
-- **Highlighting**: Easily spot items that may be of interest to you.
-- **In-Page Info**: Access useful information directly on the page without needing to navigate away.
-
+<br><br>
 ## Shop [obj #] Item Highlighter
 This script highlights items in Shops based on their price categories, making it easier to restock and spot valuable items quickly. The script uses predefined price ranges to apply different styles to items, such as color-coding and borders.
 
@@ -36,12 +32,14 @@ This script highlights items in Shops based on their price categories, making it
 To ensure the correct items are highlighted, follow these steps to manually obtain the latest item price lists from Jellyneo. Also, if you want to use this script template and add a different shop.
 
 - Search Items: Visit Jellyneo’s Item Database and search for the desired shop items.
+> [Example Search Term](https://items.jellyneo.net/search/?name_type=2&cat[]=11&min_rarity=0&max_rarity=100&min_price=40000&sort=5&sort_dir=desc&limit=75) for Spooky Food (obj 30)
 - Filter by Price: Sort the items by price to find those that fall into the desired price categories.
-- Use the "JN Item Name Extractor" script.
+- Install the "JN Item Name Extractor" script to Tampermonkey, found above.
 > [!NOTE]
 > This script is compliant with JN's Scraping Policy.
-- Copy Item Names: Copy the item names using the copy button provided by the JN script.
+- Copy item names: Copy the item names using the copy button provided by the JN script.
 - Update the Shop Script: Paste the item names into their respective lists in the script and save it.
+- Some items cost more than the SW/ JN price - just remove these as you go, and save.
 
 ##
 ### Pyramids Neopets Script
@@ -49,7 +47,8 @@ Automate your Pyramids game on Neopets. This UserScript helps you play the game 
 - **Auto-Play:** Automatically clicks 'Play Again' to start a new game.
 - **Smart Moves:** Uses an algorithm to make smart decisions on which card to play next.
 - **Random Timing:** Utilizes random timeouts to mimic human interaction.
-
+##
+<br>
 ## Installation
 For all scripts you will need a browser extension.
 
@@ -67,22 +66,23 @@ For all scripts you will need a browser extension.
    - Click 'File' then 'Save'
    - Make sure the script is enabled in Tampermonkey
 
-## Usage
-1. Navigate to the related page on Neopets
-2. The script will automatically take action based on the current state.
+### Usage
+- Navigate to the related page on Neopets
+- The script will automatically take action based on the current state.
 
-## Debugging
-1. Some scripts have debugging included, commented out until needed.
-2. You may have to use @match over @include, check the URL.
+### Debugging
+- Some scripts have debugging included, commented out until needed.
+- You may have to use @match over @include, check the URL.
 
-## Contributing
+### Contributing
 - Fork the repo on [GitHub](https://github.com/uxillary/neo-qol/)
 - Clone the project to your machine
 - Commit changes to your branch
 - Push your changes
 - Create a new Pull Request
 
-Contributions are welcome! If you have ideas for improvements, new features, or if you'd like to make changes, feel free to fork the repository and submit a pull request. I'm always open to collaborations and happy to review any updates or suggestions. :smirk:
+> [!TIP]
+> Contributions are welcome! If you have ideas for improvements, new features, or if you'd like to make changes, feel free to fork the repository and submit a pull request. I'm always open to collaborations and happy to review any updates or suggestions. :smirk:
 
 ### License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
