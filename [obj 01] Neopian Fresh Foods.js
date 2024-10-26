@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         [obj 1] Fresh Foods
-// @version      1.6
-// @description  Highlights items, price key, added sound
+// @version      1.7
+// @description  Highlights items, price key, added sound & refresh
 // @namespace    https://github.com/uxillary/neo-qol
 // @author       adamski @uxillary
 // @match        https://www.neopets.com/objects.phtml?obj_type=1&type=shop
@@ -9,9 +9,64 @@
 // @grant        none
 // ==/UserScript==
 
-// Add notification sound
+const refreshKey = 'refreshEnabled'; // Key to track refresh state in localStorage
+const minRefreshTime = 4001; // Minimum refresh interval (4 seconds)
+const maxRefreshTime = 11601; // Maximum refresh interval (11 seconds)
+
+// Load notification sound
 const notificationSound = new Audio("https://raw.githubusercontent.com/uxillary/neo-qol/main/audio/bell-drop.wav");
-notificationSound.volume = 0.5; // Adjust volume as needed
+notificationSound.volume = 0.5;
+
+// Function to start or stop the refresh timer
+function toggleRefresh() {
+    const refreshEnabled = JSON.parse(localStorage.getItem(refreshKey)) || false;
+    if (refreshEnabled) {
+        localStorage.setItem(refreshKey, false);
+        clearTimeout(refreshTimeout); // Stop refreshing
+        refreshButton.textContent = "Start";
+        refreshButton.style.backgroundColor = '#007BFF'; // Set button to blue when inactive
+    } else {
+        localStorage.setItem(refreshKey, true);
+        setRandomRefresh(); // Start refreshing
+        refreshButton.textContent = "Stop";
+        refreshButton.style.backgroundColor = '#28a745'; // Set button to green when active
+    }
+}
+
+// Function to set a random refresh interval
+function setRandomRefresh() {
+    if (JSON.parse(localStorage.getItem(refreshKey))) {
+        const refreshInterval = Math.floor(Math.random() * (maxRefreshTime - minRefreshTime + 1)) + minRefreshTime;
+        refreshTimeout = setTimeout(() => {
+            location.reload();
+        }, refreshInterval);
+    }
+}
+
+// Create the refresh toggle button
+const refreshButton = document.createElement('button');
+refreshButton.style.position = 'fixed';
+refreshButton.style.top = '110px';
+refreshButton.style.right = '35px';
+refreshButton.style.backgroundColor = JSON.parse(localStorage.getItem(refreshKey)) ? '#28a745' : '#007BFF'; // Green if active, blue if inactive
+refreshButton.style.color = 'white';
+refreshButton.style.padding = '8px 12px';
+refreshButton.style.border = 'none';
+refreshButton.style.borderRadius = '4px';
+refreshButton.style.cursor = 'pointer';
+refreshButton.style.fontSize = '12px';
+refreshButton.textContent = JSON.parse(localStorage.getItem(refreshKey)) ? "Stop" : "Start";
+
+// Add button click event to toggle the refresh
+refreshButton.addEventListener('click', toggleRefresh);
+document.body.appendChild(refreshButton);
+
+// Start the refresh timer if enabled
+if (JSON.parse(localStorage.getItem(refreshKey))) {
+    setRandomRefresh();
+}
+
+//change list items here
 
 // List Items < 700 NP 
 const List0 = [

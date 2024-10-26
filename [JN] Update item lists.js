@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         JN Item Name Extractor
-// @version      1.4
-// @description  Extracts item names from Jellyneo search results, displays them in a styled code box with a copy button and "Copied" message
+// @version      1.5
+// @description  Extracts item names from Jellyneo search results, displays them in a styled code box with a copy button.
 // @author       adamski @uxillary
 // @namespace    https://github.com/uxillary/neo-qol
 // @match        https://items.jellyneo.net/search/*
@@ -26,7 +26,7 @@
     });
 
     // Format the item names as a JavaScript list
-    const formattedList = `const List = [\n  "${itemNames.join('",\n  "')}\"\n];`;
+    const formattedList = `  "${itemNames.join('",\n  "')}\",`;
 
     // Create a div to display the formatted list
     let outputDiv = document.createElement('div');
