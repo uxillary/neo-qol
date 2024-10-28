@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         [obj 1] Fresh Foods
+// @name         [obj 01] Fresh Foods
 // @version      1.7
 // @description  Highlights items, price key, added sound & refresh
 // @namespace    https://github.com/uxillary/neo-qol
@@ -55,6 +55,7 @@ refreshButton.style.border = 'none';
 refreshButton.style.borderRadius = '4px';
 refreshButton.style.cursor = 'pointer';
 refreshButton.style.fontSize = '12px';
+refreshButton.style.zIndex = '1000';
 refreshButton.textContent = JSON.parse(localStorage.getItem(refreshKey)) ? "Stop" : "Start";
 
 // Add button click event to toggle the refresh
@@ -254,7 +255,6 @@ const List1 = [
   "Butter Toffee Popcorn",
   "Camouflage Hot Dog",
   "Caramel Flavoured Kougra Milk",
-  "Carrot",
   "Carrot Fizz Achyfi",
   "Carrot Salad",
   "Checkered Burger",
@@ -694,7 +694,6 @@ const List2 = [
   "Ogrin Peanut Butter and Jelly Sandwich",
   "Orange Baby Aisha Lollypop",
   "Orange Jetsam Cupcake",
-  "Orange Juice",
   "Orange Roll",
   "Orange Yurblecone",
   "Oyster Obsession",
