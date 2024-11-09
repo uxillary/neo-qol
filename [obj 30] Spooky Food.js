@@ -9,9 +9,9 @@
 // @grant        none
 // ==/UserScript==
 
-const refreshKey = 'refreshEnabled'; // Key to track refresh state in localStorage
-const minRefreshTime = 4001; // Minimum refresh interval (4 seconds)
-const maxRefreshTime = 11601; // Maximum refresh interval (11 seconds)
+const refreshKey = 'refreshEnabled30'; // Key to track refresh state in localStorage
+const minRefreshTime = 9001; // Minimum refresh interval (5 seconds)
+const maxRefreshTime = 16601; // Maximum refresh interval (12 seconds)
 
 // Load notification sound
 const notificationSound = new Audio("https://raw.githubusercontent.com/uxillary/neo-qol/main/audio/spooky.wav");
@@ -69,12 +69,20 @@ if (JSON.parse(localStorage.getItem(refreshKey))) {
 
 //change list items here
 
-// List Items < 700 NP
+// List Items < 1,000 np
 const List0 = [
+  "Almost Gummy Rat (Grape)",
   "Almost Gummy Rat (Strawberry)",
+  "Angry Marshmallows",
+  "Bat Cookie",
   "Blumaroo Steak",
   "Bone Dog",
+  "Bottled Droolik Drool",
+  "Box of Skull Truffles",
+  "Brain Stew",
+  "Candy Corn Stuffed Pumpkin",
   "Cannibalistic Pumpkin",
+  "Carnivorous Carved Pumpkin",
   "Chilled Eyeball Custard",
   "Chilled Eyes with Clam Sauce",
   "Chocolate Ice Cream Apple Lantern",
@@ -82,22 +90,34 @@ const List0 = [
   "Chokato Ghostkersandwich",
   "Clawmatoe",
   "Crispy Pumpkin Chips",
+  "Deviled Delight",
   "Deviled Eggs",
   "Deviled Steak",
+  "Disgruntled Candy Corn",
+  "Ectoplasm Nachos",
   "Eliv Thade Chips",
   "Eliv Thade Sandwich",
+  "Eliv Thade Sludge Shake",
+  "Eye Candy",
+  "Festering Coffee",
+  "Ghost Pancakes",
+  "Ghostly Soup",
   "Glaring Eye Wrap",
+  "Gnome Shroom",
   "Grundo Stix",
+  "Halloween Jinjah Platter",
   "Haunted Milk",
   "Jellied Eyeballs",
   "Large Grundo Toe With Lint Side Order",
   "Mummified Ice Cream",
   "Octornapie",
   "Peanut Butter Spiders",
+  "Pulsating Brain Custard",
   "Pumpkin Cookies",
   "Pumpkin Pie",
   "Pumpkin Slice",
   "Roast Tentacle",
+  "Roasted Spyder on a Stick",
   "Scary Soup",
   "Skeith Juice Cocktail",
   "Slime Ghostkersandwich",
@@ -107,105 +127,92 @@ const List0 = [
   "Snorkle Pudding",
   "Spaghetti and Eyeballs",
   "Spectral Cinnamon Rolls",
+  "Spider Licorice",
   "Spooky Doughnut",
   "Spooky Gooplecream",
   "Spooky Raspberry Pie",
   "Spooky Shake",
   "Squishy Brain Wrap",
   "Sun Dried Techo Claw",
+  "Toffee Classic",
+  "Tombscones",
   "Tongue with Veggies",
   "Undead Celery",
   "Undead Turnip",
   "Zombie Marshmallows",
 ];
 
-// List Items 1,900 - 4,000 NP
+// List Items > 2k - 5k np
 const List1 = [
   "Aggressive Casserole",
-  "Angry Marshmallows",
-  "Baked Intesteen",
   "Beast Burger",
-  "Bleeding Heart Jelly Sundae",
   "Brain Candy Mix",
   "Candy Corn Classic",
   "Candy Corn Fizzy Drink",
-  "Carnivorous Carved Pumpkin",
-  "Cheese Ghostkersandwich",
+  "Cheese Puff Fingers",
+  "Chocolate Covered Peanuts",
   "Chocolate Graveyard Cake",
   "Coffin Cake",
   "Count Cross Buns",
   "Creepy Spring Salad",
-  "Cress Ghostkersandwich",
-  "Crunch Chocolate Scoaches",
   "Cup of Pustulence",
+  "Eyeball and Worm Sandwich",
   "Eyeball Slushie",
-  "Festering Coffee",
   "Finger Sandwiches",
   "Fried Worm Stew",
   "Frothy Fruit Juice",
-  "Ghost Marshmallows",
-  "Glaring Cheesecake",
+  "Ghost Burger",
+  "Ghostmallow Smore",
   "Gooey Bug Soup",
-  "Gravy Nightmare",
-  "Gummi Worms",
-  "Halloween Jinjah Platter",
+  "Halloween Tapira Cake",
+  "Haunted Pumpkin Bar",
   "Ichor Ghost Toast",
+  "Intestines and Marinara",
   "Korbat Wing Soup",
-  "Macawormi and Cheese",
   "Magic Ghost Marshmallows",
-  "Mint Ice Cream Apple Lantern",
+  "Millipede Lollypop",
   "Mystery Meat Sandwich",
   "Pickled Eyeballs",
-  "Pumpkin Chip Surprise",
+  "Pumpkin Ghost Toast",
+  "Pumpkin Pot Pie",
+  "Refreshing Barrel Water",
   "Roast Lizard Eggs",
-  "Slime Soup",
+  "Slime Cream",
   "Slime-Frosted Pretzel",
+  "Slimy Pumpkin Soup",
+  "Spaghetti and Brains",
+  "Spooky Donuts",
   "Spooky Lime Pudding",
-  "Undead Broccoli",
-  "Vanilla Ghost Cake",
+  "Tongue Wrap",
+  "Vanilla Ice Cream Apple Lantern",
   "Wormy Pasta",
 ];
 
-// List Items 4,000 - 40,000 NP
+// List Items 5k - 15k np
 const List2 = [
-  "Army of Undead Cupcakes",
-  "Bat Kebab",
   "Berried in Bread",
   "Bloody Ghost Toast",
-  "Bloopcream",
   "Blooppop",
   "Blumaroo Tail Salad Extravaganza",
-  "Bone-Chilling Bacon",
-  "Brains and Dumplings",
-  "Cadaverous Cola",
-  "Candy Corn Stuffed Pumpkin",
-  "Candy Skull",
-  "Cheese Puff Fingers",
+  "Boiled Lizard Stew",
   "Chocolate Jack-O-Lantern Chip Cookie",
-  "Coffee of the Dead",
   "Cole Slaughter",
   "Cookie Hats",
+  "Crunch Chocolate Scoaches",
   "Crunchy Tooth Surprise",
   "Crypt Crisps",
   "Deadly Apple Pie",
   "Deep Fried Ghosts",
-  "Disgruntled Candy Corn",
-  "Droolik Surprise",
   "Eerie Eggs",
-  "Elephante Trunk Stew",
   "Eye of Mortog Soup",
-  "Eyeball and Worm Sandwich",
   "Eyeball Stew Cake",
   "Eyewich",
   "Fright Pop",
-  "Ghost Burger",
   "Ghost Mashed Potato",
   "Ghost Meepmallows",
   "Ghost Puff",
-  "Ghostmallow Smore",
-  "Hair Stuffed Maggot",
-  "Haunted Pumpkin Bar",
-  "Haunted Salad",
+  "Gummi Worms",
+  "Halloween Oranges",
   "Holiday Eye Candy",
   "Holiday Ghostpuff",
   "Holiday Gingerbread Mansion",
@@ -213,26 +220,16 @@ const List2 = [
   "Horror Doeuvres",
   "Impasta Spaghetti and Meatballs",
   "Intesteen Casserole",
-  "Intestines and Marinara",
   "Lizarkagna",
+  "Macawormi and Cheese",
   "Marshmallow and Slime Souffle",
   "Meatloathe",
   "Menacing Brew",
   "Pink Spooky Floss",
-  "Psimouse Cake",
-  "Pumpkin Ice Cream",
-  "Pumpkin Pot Pie",
-  "Pumpkin Scoopings",
-  "Refreshing Barrel Water",
   "Rest in Pea Soup",
-  "Rest in Peace of Chicken",
   "Roast Worm with Cranberries",
   "Saus-Rage",
-  "Slime Cream",
-  "Slimy Pumpkin Soup",
   "Snorkle Snout",
-  "Spooky Donuts",
-  "Spooky Ghostbeef",
   "Spooky Handwich",
   "Spyder Eggs",
   "Spyder Muffins",
@@ -240,35 +237,59 @@ const List2 = [
   "This Isnt Chili Cheese Fries",
   "Turkey Monster",
   "Twice-Baked Spiked Potato",
-  "Vanilla Ice Cream Apple Lantern",
+  "Vanilla Ghost Cake",
 ];
 
-// List Items 
+// List Items 15k - 100k NP
 const List3 = [
-
+  "Army of Undead Cupcakes",
+  "Bat Kebab",
+  "Bloody Ghost Toast",
+  "Bloopcream",
+  "BluePepper Porridge",
+  "Bone-Chilling Bacon",
+  "Brain Ice Cream",
+  "Brains and Dumplings",
+  "Cadaverous Cola",
+  "Candy Skull",
+  "Chocolate Coated Eye",
+  "Coffee of the Dead",
+  "Disturbing Gelatin",
+  "Droolik Surprise",
+  "Ednas Spooky Brew",
+  "Elephante Trunk Stew",
+  "Forgotten Apple",
+  "Hair Stuffed Maggot",
+  "Haunted Salad",
+  "Jalapeno Cheese Nightmare",
+  "Psimouse Cake",
+  "Pumpkin Ice Cream",
+  "Pumpkin Scoopings",
+  "Quiggle Pie",
+  "Raspberry Ghostkerchief Jelly",
+  "Rest in Peace of Chicken",
+  "Rotting Veggies Salad",
+  "Sponge Apple",
+  "Spooky Ghostbeef",
+  "Strawberry Ice Cream Apple Lantern",
+  "The Stuff",
+  "This Isnt Chili Cheese Fries",
+  "Worm Stew",
 ];
 
-// List Items 40k +
+// List Items > 100k NP +
 const List4 = [
   "Apple Lantern",
-  "BluePepper Porridge",
   "Bogie Berry",
-  "Brain Ice Cream",
   "Chocolate Coated Eye",
   "Coco Pumpkin",
   "Crunchy Snotball",
-  "Disturbing Gelatin",
-  "Ednas Spooky Brew",
   "Elderly Apple",
-  "Forgotten Apple",
   "Gorerito",
   "Grundo Toe Lint",
   "Halloween Candy Cane",
-  "Halloween Oranges",
-  "Jalapeno Cheese Nightmare",
   "Jelly Finger",
   "Jelly Spider Eyeball",
-  "Marshmallow and Slime Souffle",
   "Meerca Pie",
   "Mouldy Cheese",
   "Parts on a Pizza",
@@ -276,16 +297,10 @@ const List4 = [
   "Pink Spooky Ice Cream",
   "Pink Spooky Popcorn",
   "Poison Apples",
-  "Quiggle Pie",
-  "Raspberry Ghostkerchief Jelly",
-  "Rotting Veggies Salad",
   "Runny Snot",
-  "Sponge Apple",
   "Spoooky Muffin",
   "Steamed Ectoplasm",
-  "The Stuff",
   "Wing of Korbat",
-  "Worm Stew",
 ];
 
 // Function to apply styles to items based on the current array
@@ -326,33 +341,70 @@ const List4 = [
     </div>
     <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; background-color: #f1f1f1; margin-right: 5px;"></div>
-        < 700 np
+        < 1,000 np
     </div>
     <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; background-color: #fff; margin-right: 5px;"></div>
-        700 - 1,900
+        1k - 2k
     </div>
     <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; border: 1px dotted green; margin-right: 5px;"></div>
-        1,900 - 4,000
+        2k - 5k
     </div>
     <div style="display: flex; align-items: center; margin-bottom: 6px;">
         <div style="width: 12px; height: 12px; border: 1px solid orange; margin-right: 5px;"></div>
-        4,000 - 40k
+        5k - 15k
     </div>
     <div style="display: flex; align-items: center;">
         <div style="width: 12px; height: 12px; border: 2px dashed red; margin-right: 5px;"></div>
-        40k - 500k
+        15k - 100k
     </div>
     <div style="display: flex; align-items: center;">
         <div style="width: 12px; height: 12px; border: 2px solid red; margin-right: 5px; margin-top: 5px;"></div>
-        500k +
+        100k +
     </div>
 `;
 
-    // Append the price key div to the body
+    // Countdown Element
+    let countdownDiv = document.createElement('div');
+    countdownDiv.style.marginTop = '10px';
+    countdownDiv.style.fontSize = '12px';
+    countdownDiv.style.fontWeight = 'bold';
+    countdownDiv.style.color = '#333';
+    countdownDiv.textContent = 'Countdown: 5';
+
+    keyDiv.appendChild(countdownDiv); // Append countdown below the price key
+    document.body.appendChild(keyDiv);
+
+    // Countdown Logic
+    let countdown = 5;
+    setInterval(() => {
+        countdown = countdown === 1 ? 5 : countdown - 1; // Reset to 5 after reaching 1
+        countdownDiv.textContent = `Countdown: ${countdown}`;
+    }, 1000); // Update every second
+
+// Append the price key div to the body
     document.body.appendChild(keyDiv);
 })();
+
+// Tab Colour Change/ Flash
+
+let flashInterval; // Store the interval ID to stop flashing later
+let originalTitle = document.title; // Save the original title
+
+// Function to start flashing the tab title
+function startFlashingTab() {
+    flashInterval = setInterval(() => {
+        document.title = document.title === originalTitle ? "⚠️ High-Value Item! ⚠️" : originalTitle;
+    }, 500); // Flash every 500ms
+}
+
+// Function to stop flashing the tab title
+function stopFlashingTab() {
+    clearInterval(flashInterval); // Stop the interval
+    document.title = originalTitle; // Reset to original title
+}
+
 
 // Function to apply styles to items based on the current array
 function applyStylesToItems(itemArray) {
@@ -366,6 +418,8 @@ function applyStylesToItems(itemArray) {
       if (itemArray === List4) {
         // Red Thick Box
         notificationSound.play(); // Play sound
+        startFlashingTab(); // Start flashing the tab
+        setTimeout(stopFlashingTab, 6000); // Stop flashing after 6 seconds
         itemNames[i].parentNode.style.border = "5px solid red";
         itemNames[i].parentNode.style.padding = "5px";
         itemNames[i].parentNode.style.boxShadow = "0 4px 8px rgba(255, 0, 0, 0.2)";
@@ -375,6 +429,8 @@ function applyStylesToItems(itemArray) {
       } else if (itemArray === List3) {
         // Red Dashed
         notificationSound.play(); // Play sound
+        startFlashingTab(); // Start flashing the tab
+        setTimeout(stopFlashingTab, 6000); // Stop flashing after 6 seconds
         itemNames[i].parentNode.style.border = "2px dashed red";
         itemNames[i].style.color = "red";
         itemNames[i].parentNode.style.paddingTop = "5px";
